@@ -42,3 +42,11 @@ module "aws_eks" {
 }
 
 # GitOps Configuration
+module "argo-cd-server" {
+  source = "github.com/hamlet07/module-argo-cd.git"
+  kubernetes_cluster_id = module.aws_eks.eks_cluster_id
+  kubernetes_cluster_name = module.aws_eks.eks_cluster_name
+  kubernetes_cluster_cert_data = module.aws_eks.eks_cluster_certificate_data
+  kubernetes_cluster_endpoint = module.aws_eks.eks_cluster_endpoint
+  eks_nodegroup_id = module.aws_eks.eks_cluster_nodegroup_id
+}
