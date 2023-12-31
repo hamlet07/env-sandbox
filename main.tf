@@ -25,5 +25,20 @@ module "aws_network" {
   private_subnet_b_cidr = "10.10.192.0/18"
 }
 # EKS Configuration
+module "aws_eks" {
+  source                = "github.com/hamlet07/module-aws-kubernetes"
+  env_name              = local.env_name
+  cluster_name          = local.k8s_cluster_name
+  aws_region            = local.region
+  vpc_id                = module.aws_network.vpc_id
+  cluster_subnet_ids    = module.aws_network.subnet_ids
+
+  nodegroup_subnet_ids       = module.aws-network.private_subnet_ids
+  nodegroup_disk_size        = "20"
+  nodegroup_instance_type    = ["t3.medium"]
+  nodegroup_desired_capacity = 1
+  nodegroup_min_size         = 1
+  nodegroup_max_size         = 3
+}
 
 # GitOps Configuration
