@@ -33,7 +33,7 @@ module "aws_eks" {
   vpc_id                = module.aws_network.vpc_id
   cluster_subnet_ids    = module.aws_network.subnet_ids
 
-  nodegroup_subnet_ids       = module.aws-network.private_subnet_ids
+  nodegroup_subnet_ids       = module.aws_network.private_subnet_ids
   nodegroup_disk_size        = "20"
   nodegroup_instance_types    = ["t3.medium"]
   nodegroup_desired_size = 1
