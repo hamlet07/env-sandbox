@@ -35,7 +35,7 @@ module "aws_eks" {
 
   nodegroup_subnet_ids       = module.aws-network.private_subnet_ids
   nodegroup_disk_size        = "20"
-  nodegroup_instance_type    = ["t3.medium"]
+  nodegroup_instance_types    = ["t3.medium"]
   nodegroup_desired_capacity = 1
   nodegroup_min_size         = 1
   nodegroup_max_size         = 3
